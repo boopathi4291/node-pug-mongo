@@ -1,0 +1,18 @@
+extends index.pug
+block eventsPlaceHolder
+    center 
+        h1=title
+    table.table.table-striped
+        thead
+            tr
+                th Name
+                th Company
+                th Event
+                th Date
+        tbody
+        each event in events
+            tr
+                td=event.name
+                td=event.company
+                td=event.event
+                td=event.date
