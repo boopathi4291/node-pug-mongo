@@ -9,10 +9,13 @@ block eventsPlaceHolder
                 th Company
                 th Event
                 th Date
+                th Details
         tbody
         each event in events
             tr
-                td=event.name
-                td=event.company
-                td=event.event
-                td=event.date
+                td=event.eventName
+                td=event.eventCode
+                td=event.description
+                td=event.startDate
+                td
+                    a.btn.btn-primary(href='/events/'+event.eventId) View

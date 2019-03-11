@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-
+const request = require("request");
 
 const app = express();
 
@@ -19,6 +19,8 @@ app.use(morgan("dev")); // logging in the development mode
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(`${__dirname}/public`));
+
+
 
 /**
  * router navigation configuration
@@ -41,11 +43,26 @@ app.get('/home',(req,res)=>{
 });
 app.get('/events',(req,res)=>{
     //res.sendFile(`${__dirname}/views/index.html`)  only for .html exptensions
-    res.render("events",{
-        title:"Upcoming Events",
-        events:data
+    request.get('http://localhost:8080/api/events',(err,response,body)=>{
+        res.render("events",{
+            title:"Upcoming Events",
+            events:JSON.parse(body)
+        })
     })
+    
 });
+app.get('/events/:id',(req,res)=>{
+    //res.sendFile(`${__dirname}/views/index.html`)  only for .html exptensions
+    request.get('http://localhost:8080/api/events/'+req.params.id,(err,response,body)=>{
+        console.log(body)
+        res.render("event",{
+            title:" Event Details of ",
+            event:JSON.parse(body)
+        })
+    })
+    
+});
+
 app.get('/newEvent',(req,res)=>{
     //res.sendFile(`${__dirname}/views/index.html`)  only for .html exptensions
     res.render('newEvent',{

@@ -1,0 +1,36 @@
+extends index.pug
+block homePlaceHolder
+    h1=title + event.eventName
+    hr
+    br
+    table.table.table-hover.table-striped
+        tr
+            th Event Id
+            td=event.eventId
+        tr
+            th Event Code
+            td=event.eventCode
+        tr
+            th Event Name
+            td=event.eventName
+        tr
+            th Start Date
+            td=event.startDate
+        tr
+            th End Date
+            td=event.startDate
+        tr
+            th Fees
+            td=event.fees
+        tr
+            th Attendance
+            td
+                div.progress
+                    div.progress-bar.progress-bar-striped.progress-bar-animated(role="progressbar", style="width:"+ event.seatsFilled +"%")
+        tr
+            th Logo
+            td
+                img(src="/"+event.logo,title=event.eventName)     
+                
+                
+                
