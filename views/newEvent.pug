@@ -1,4 +1,31 @@
 extends index.pug
 block newEventPlaceHolder
-    center
-        h1=title
+        form(method='POST' action='/register')
+            div.form-group
+                label(for='eventId') Event Id:
+                input#name.form-control(type='number', placeholder='Enter Event Id', name='eventId')
+            div.form-group
+                label(for='eventCode') Event Code:
+                input#name.form-control(type='text', placeholder='Enter Event Code', name='eventCode')
+            div.form-group
+                label(for='eventName') Event Name:
+                input#name.form-control(type='text', placeholder='Enter Event Name', name='eventName')
+            div.form-group
+                label(for='description') Event Description:
+                input#name.form-control(type='text', placeholder='Enter Event Description' name='description')
+            div.form-group
+                label(for='startDate') Start Date:
+                input#name.form-control(type='date', placeholder='Enter Event Start Date', name='startDate')
+            div.form-group
+                label(for='endDate') Start Date:
+                input#name.form-control(type='date', placeholder='Enter Event End Date', name='endDate')
+            div.form-group
+                label(for='fees') Fees:
+                input#name.form-control(type='number', placeholder='Enter Event fees', name='fees')
+            div.form-group
+                label(for='attendance') Attendance:
+                input#name.form-control(type='number', placeholder='Enter Event attedance', name='attendance')
+            div.form-group
+                label(for='logo') Logo:
+                input#name.form-control(type='text', name='logo', value="images/noimage.png", disabled="disabled" )                    
+                button.btn.btn-primary(type='submit') Register New Event

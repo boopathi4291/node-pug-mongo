@@ -1,0 +1,15 @@
+extends index.pug
+block homePlaceHolder
+    div.container
+        .row
+            .col-md-9.col-md-offset-3
+                h1=title
+                hr
+                form(method='POST' action='/userAuth')
+                    div.form-group
+                        label(for='name') User Name:
+                        input#name.form-control(type='text', placeholder='Enter User Name', name='name')
+                    div.form-group
+                        label(for='password') Password:
+                        input#password.form-control(type='password', placeholder='Enter Password', name='password')
+                    button.btn.btn-primary#btnLoginSubmit(type="submit") Login
